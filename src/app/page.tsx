@@ -1,13 +1,13 @@
 "use client";
 
 import { Suspense, useContext, useEffect, useState } from "react";
-import { findAdvocates } from "./utils/find-advocates";
-import { Advocates } from "./types/advocates-types";
-import { getAdvocates } from "./utils/get-advocates";
 import Image from "next/image";
-import solaceLogo from "./assets/images/solace-logo.svg";
+import { findAdvocates } from "./utils/find-advocates";
 import { formatAdvocatePhoneNumber } from "./utils/format-advocate-data";
 import { ThemeContext } from "./contexts/theme";
+import solaceLogo from "./assets/images/solace-logo.svg";
+import { Advocates } from "./types/advocates-types";
+import { getAdvocates } from "./utils/get-advocates";
 
 export default function Home() {
   const [advocates, setAdvocates] = useState<Advocates>([]);
@@ -94,10 +94,11 @@ export default function Home() {
       </div>
       <h1 className="text-2xl mb-8">Solace Advocates</h1>
       <div className="flex gap-4 items-center">
-        <label id="search-label">
+        <label htmlFor="search-input" id="search-label">
           Search for:
         </label>
         <input
+          id="search-input"
           className="border border-black dark:border-gray-700 dark:text-black p-2"
           onChange={onChange}
           value={searchTerm}
@@ -110,9 +111,7 @@ export default function Home() {
           Reset Search
         </button>
       </div>
-      <br />
-      <br />
-      <table className="sm:table-fix lg:table-auto border-collapse w-full">
+      <table className="sm:table-fix lg:table-auto border-collapse w-full mt-8">
         <thead>
           <tr className="bg-[#265b4e] text-white text-left">
             <th className="px-4 py-2" scope="col">
